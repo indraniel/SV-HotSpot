@@ -56,3 +56,5 @@ clean:
 # https://stackoverflow.com/questions/53382383/makefile-cant-use-conda-activate/55696820#55696820
 # https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533
 # http://mlg.eng.cam.ac.uk/hoffmanm/blog/2016-02-25-conda-build/
+# https://www.youtube.com/watch?v=HSK-6dCnYVQ
+# https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533
