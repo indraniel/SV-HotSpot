@@ -23,6 +23,7 @@ svhotspot: $(CONDA)
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) 'r-base>=3.1.0'
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) r-ggplot2
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) conda-build
+	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) conda-verify
 	git clone $(SV_HOTSPOT_URL) $(SV_HOTSPOT_LOCAL)
 	cd $(SV_HOTSPOT_LOCAL) && git checkout -b docker-conda origin/docker-conda
 	cd $(SV_HOTSPOT_LOCAL) && $(CONDA) build sv-hotspot
@@ -36,6 +37,8 @@ $(CONDA): $(MINICONDA_INSTALLER)
 	$(CONDA) config --add channels defaults
 	$(CONDA) config --add channels bioconda
 	$(CONDA) config --add channels conda-forge
+	$(CONDA) install -v --yes conda-build
+	$(CONDA) install -v --yes conda-verify
 
 $(MINICONDA_INSTALLER):
 	curl -k -L -O $(MINICONDA_URL)
