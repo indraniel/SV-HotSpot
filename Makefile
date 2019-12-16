@@ -9,7 +9,8 @@ MINICONDA_INSTALLER := $(BUILD_DIR)/Miniconda3-latest-Linux-x86_64.sh
 MINICONDA_INSTALL_PREFIX := /opt/mini
 CONDA := $(MINICONDA_INSTALL_PREFIX)/bin/conda
 CONDA_ACTIVATE := $(MINICONDA_INSTALL_PREFIX)/bin/activate
-CONDA_PROFILE := /opt/mini/etc/profile.d/conda.sh
+CONDA_PROFILE := $(MINICONDA_INSTALL_PREFIX)/etc/profile.d/conda.sh
+CONDA_BUILD_PATH := $(MINICONDA_INSTALL_PREFIX)/conda-bld/linux-64
 
 SV_HOTSPOT_URL := https://github.com/indraniel/SV-HotSpot
 SV_HOTSPOT_LOCAL := $(BUILD_DIR)/SV-HotSpot-conda-builder
@@ -27,7 +28,8 @@ svhotspot: $(CONDA)
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) conda-verify
 	git clone $(SV_HOTSPOT_URL) $(SV_HOTSPOT_LOCAL)
 	cd $(SV_HOTSPOT_LOCAL) && git checkout -b docker-conda origin/docker-conda
-	cd $(SV_HOTSPOT_LOCAL) && $(CONDA) build --prefix $(SVHOTSPOT_ENV) sv-hotspot
+	cd $(SV_HOTSPOT_LOCAL) && $(CONDA) build sv-hotspot
+	cd $(SV_HOTSPOT_LOCAL) && cp $(CONDA_BUILD_PATH)/sv-hotspot-*-.tar.bz2 ..
 #	source $(CONDA_PROFILE) && $(CONDA) activate $(SVHOTSPOT_ENV)
 
 $(CONDA): $(MINICONDA_INSTALLER)
