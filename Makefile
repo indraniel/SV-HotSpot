@@ -12,19 +12,20 @@ CONDA_ACTIVATE := $(MINICONDA_INSTALL_PREFIX)/bin/activate
 CONDA_PROFILE := /opt/mini/etc/profile.d/conda.sh
 
 SV_HOTSPOT_URL := https://github.com/indraniel/SV-HotSpot
-SV_HOTSPOT_LOCAL := $(BUILD_DIR)/SV-HotSpot
+SV_HOTSPOT_LOCAL := $(BUILD_DIR)/SV-HotSpot-conda-builder
 
 all: svhotspot
 
 svhotspot: $(CONDA)
 	$(CONDA) create --yes --prefix $(SVHOTSPOT_ENV)
-	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) perl>=5.10
+	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) 'perl>=5.10'
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) bedtools
-	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) r-base>=3.1.0
+	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) 'r-base>=3.1.0'
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) r-ggplot2
+	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) conda-build
 	git clone $(SV_HOTSPOT_URL) $(SV_HOTSPOT_LOCAL)
-	cd $(SV_HOTSPOT_LOCAL)
-	git checkout -b 
+	cd $(SV_HOTSPOT_LOCAL) && git checkout -b docker-conda origin/docker-conda
+	cd $(SV_HOTSPOT_LOCAL) && $(CONDA) build sv-hotspot
 #	source $(CONDA_PROFILE) && $(CONDA) activate $(SVHOTSPOT_ENV)
 
 $(CONDA): $(MINICONDA_INSTALLER)
