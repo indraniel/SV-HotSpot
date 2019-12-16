@@ -1,13 +1,12 @@
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: sv-hotspot
   version: {{ version }}
 
 source:
-  url: https://github.com/Eteleeb/SV-HotSpot/archive/v{{ version }}.tar.gz
-  sha256: fac002af19036e88953ccf7bdd3cf29e0a5818c6c4458160b054db3fb87e2f53
-  #git_url: https://github.com/Eteleeb/SV-HotSpot.git
+  git_url: https://github.com/indraniel/SV-HotSpot.git
+  git_rev: {{ version }}
 
 
 build:
