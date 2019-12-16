@@ -19,6 +19,7 @@ all: svhotspot
 svhotspot: $(CONDA)
 	$(CONDA) create --yes --prefix $(SVHOTSPOT_ENV)
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) 'perl>=5.10'
+	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) 'perl-list-moreutils'
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) bedtools
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) 'r-base>=3.1.0'
 	$(CONDA) install -v --yes --prefix $(SVHOTSPOT_ENV) r-ggplot2
