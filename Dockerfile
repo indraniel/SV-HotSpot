@@ -12,6 +12,7 @@ RUN apt-get update -qq \
         git-core \
         libcurl4-openssl-dev \
         curl \
+        ca-certificates \
         zlib1g-dev \
         --no-install-recommends
 
