@@ -37,7 +37,7 @@ requirements:
 test:
     commands:
         - $R -e "library('ggplot2')"
-        - sv-hotspot.pl --help
+        #- sv-hotspot.pl --help
 
 about:
   home: https://github.com/ChrisMaherLab/SV-Hotspot
