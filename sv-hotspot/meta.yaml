@@ -1,4 +1,4 @@
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: sv-hotspot
@@ -36,7 +36,7 @@ requirements:
 test:
     commands:
         - $R -e "library('ggplot2')"
-        #- sv-hotspot.pl --help
+        - sv-hotspot.pl --help
 
 about:
   home: https://github.com/ChrisMaherLab/SV-Hotspot
