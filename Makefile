@@ -1,4 +1,4 @@
-.PHONY: clean svhotspot
+.PHONY: clean svhotspot create-conda-channel update-conda-channel
 
 SHELL := /bin/bash
 
@@ -46,6 +46,24 @@ $(CONDA): $(MINICONDA_INSTALLER)
 $(MINICONDA_INSTALLER):
 	curl -k -L -O $(MINICONDA_URL)
 
+update-conda-channel:
+	git checkout -b conda-channel origin/conda-channel
+
+create-conda-channel:
+	git checkout --orphan conda-channel
+	git rm -rf .
+	git commit -m 'initialize conda-channel'
+	git push origin conda-channel:conda-channel
+	git branch --set-upstream-to origin/conda-channel
+	mkdir -p channel/{linux-64,linux-32,osx-64,win-64,win-32}
+	cp -v sv-hotspot-*.tar.bz2 channel/linux-64
+	cp -v sv-hotspot-*.tar.bz2 channel/linux-32
+	cp -v sv-hotspot-*.tar.bz2 channel/osx-64
+	cp -v sv-hotspot-*.tar.bz2 channel/win-64
+	cp -v sv-hotspot-*.tar.bz2 channel/win-32
+	git add channel
+	git commit -m 'first edition conda build file'
+
 clean:
 	rm -rfv $(SVHOTSPOT_ENV)
 	rm -rfv $(MINICONDA_INSTALL_PREFIX)
@@ -58,3 +76,4 @@ clean:
 # http://mlg.eng.cam.ac.uk/hoffmanm/blog/2016-02-25-conda-build/
 # https://www.youtube.com/watch?v=HSK-6dCnYVQ
 # https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533
+# https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/create-custom-channels.html
