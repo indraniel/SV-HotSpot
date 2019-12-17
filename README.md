@@ -4,6 +4,7 @@
 
 ```bash
 git clone https://github.com/indraniel/SV-HotSpot
+cd SV-HotSpot
 git checkout -b docker-conda origin/docker-conda
 docker build -t svhotspot:v1 .
 docker run -i -t -v $PWD:/build --rm svhotspot:v1 /bin/bash
