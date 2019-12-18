@@ -1,0 +1,107 @@
+{
+  "paths": [
+    {
+      "_path": "bin/annotate_peaks.sh",
+      "path_type": "hardlink",
+      "sha256": "c27d92cfaca69ba8dcd6679399de4a76cc2e2ced6f6ecaf8d014a5648c1a24a8",
+      "size_in_bytes": 6134
+    },
+    {
+      "_path": "bin/combine-counts-files.r",
+      "path_type": "hardlink",
+      "sha256": "636b0d6580e680f40fbfb57aacb207090e44b6ad83247068a75b6ec4c72c4923",
+      "size_in_bytes": 398
+    },
+    {
+      "_path": "bin/combine_roi_files.r",
+      "path_type": "hardlink",
+      "sha256": "1cde79f78c46515bd1d6dae7aa414aead4b0c4c51c3c33bbc1e967584ec34103",
+      "size_in_bytes": 1127
+    },
+    {
+      "_path": "bin/detect-peaks.r",
+      "path_type": "hardlink",
+      "sha256": "4b06c961aac0ca253c38045c245616e05e4d8f39bfafe4e2045c6143b6e55ce4",
+      "size_in_bytes": 11328
+    },
+    {
+      "_path": "bin/determine_gene_association.r",
+      "path_type": "hardlink",
+      "sha256": "e4cf86bd21be2c8ebe6de1dd6ac03e1c6a61b5d978c71421c2aeaf04bef466dd",
+      "size_in_bytes": 19759
+    },
+    {
+      "_path": "bin/generate-bedpe-for-DEL-DUP.r",
+      "path_type": "hardlink",
+      "sha256": "ad07c19709ecea90d60d0356fdf60fd7a44bf530045cd6a3da4edea855aa12b5",
+      "size_in_bytes": 1073
+    },
+    {
+      "_path": "bin/genome-to-sliding-window.r",
+      "path_type": "hardlink",
+      "sha256": "4ff78d98088f58f0152b6cf41cf90eb652b1b3972dd237bffc209e0bc41d6587",
+      "size_in_bytes": 1416
+    },
+    {
+      "_path": "bin/plot-peak.pl",
+      "path_type": "hardlink",
+      "sha256": "beb37776eccb9f819d932e690144cadccec821516a45249539b93f364274e96b",
+      "size_in_bytes": 5843
+    },
+    {
+      "_path": "bin/plot_peak_region.r",
+      "path_type": "hardlink",
+      "sha256": "1791ead5ac7dddd7efb868229ccb578d80a7103b0294eec1d9dd759922b6f954",
+      "size_in_bytes": 44863
+    },
+    {
+      "_path": "bin/plot_peak_region_using_dom.r",
+      "path_type": "hardlink",
+      "sha256": "903e8a78e2a71428dfbd162d316bacda1002b0ac86cb6559a0ce27f82ff6e26e",
+      "size_in_bytes": 33192
+    },
+    {
+      "_path": "bin/plot_peaks.r",
+      "path_type": "hardlink",
+      "sha256": "1076bee134095a6ec1d3a6a1f50cbf45255a4cc288b8fcb09b106ff9bd3fa789",
+      "size_in_bytes": 43402
+    },
+    {
+      "_path": "bin/process_chip_cov.r",
+      "path_type": "hardlink",
+      "sha256": "fc0688fab69ebe17f955deef3848447fa8624efce7ae0053be8f659e56e10a39",
+      "size_in_bytes": 2075
+    },
+    {
+      "_path": "bin/select-rows.pl",
+      "path_type": "hardlink",
+      "sha256": "2591b11ceaf39dfbb97740c38cee7ae6110076a560a97068832352ae34759fae",
+      "size_in_bytes": 1428
+    },
+    {
+      "_path": "bin/summarize-sample-count.r",
+      "path_type": "hardlink",
+      "sha256": "1f734b39ddcfc1cf83c3436ceee5caabfdc6c821f904c02f271510d039fce625",
+      "size_in_bytes": 2999
+    },
+    {
+      "_path": "bin/summarize-sample-count_v2.r",
+      "path_type": "hardlink",
+      "sha256": "d0c004e3d8ee321b41a39af356032f80b7743f637d01d931c65bff2fceb4c3b4",
+      "size_in_bytes": 3623
+    },
+    {
+      "_path": "bin/summarize_peaks_results.r",
+      "path_type": "hardlink",
+      "sha256": "7ff69c72c36c9075f1dd1c2be41dd4add9a8aa2769f957c95e84dc18f5072d33",
+      "size_in_bytes": 5662
+    },
+    {
+      "_path": "bin/sv-hotspot.pl",
+      "path_type": "hardlink",
+      "sha256": "a7ba60bd90037c1ff00c9990f93a2734512a575554b2d9b0025f1f0bb4a82c82",
+      "size_in_bytes": 27533
+    }
+  ],
+  "paths_version": 1
+}

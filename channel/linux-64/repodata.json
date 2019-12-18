@@ -1,0 +1,29 @@
+{
+  "info": {
+    "subdir": "linux-64"
+  },
+  "packages": {
+    "sv-hotspot-1.0.2-pl526r36_0.tar.bz2": {
+      "build": "pl526r36_0",
+      "build_number": 0,
+      "depends": [
+        "bedtools 2.29.1",
+        "perl >=5.10",
+        "perl-list-moreutils",
+        "r-base >=3.6,<3.7.0a0",
+        "r-ggplot2"
+      ],
+      "license": "NA",
+      "md5": "e06e45847f0e50ad07d55d6427b38817",
+      "name": "sv-hotspot",
+      "sha256": "409a1dde3dc92e9d1a13c87d9e4ce738b362d23721d739ffb7a72208c854470b",
+      "size": 39095,
+      "subdir": "linux-64",
+      "timestamp": 1576664147951,
+      "version": "1.0.2"
+    }
+  },
+  "packages.conda": {},
+  "removed": [],
+  "repodata_version": 1
+}
