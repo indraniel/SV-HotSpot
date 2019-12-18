@@ -46,29 +46,26 @@ $(CONDA): $(MINICONDA_INSTALLER)
 $(MINICONDA_INSTALLER):
 	curl -k -L -O $(MINICONDA_URL)
 
-update-conda-channel::
 define input-arg-error-msg
 missing required inputpkg argument, please run:
 
-    make update-conda-channel inputpkg=/path/to/yourpkg.version.tar.bz2
+	make update-conda-channel inputpkg=/path/to/yourpkg.version.tar.bz2
 
 
 endef
 
-define inputpkg-not-exist-error-msg
-Did not find $(inputpkg) on file system!
-endef
-
-ifdef inputpkg
-	@echo 'got a value for input-pkg ' $(inputpkg)
-else
-	$(error $(input-arg-error-msg))
-endif
-
-# https://stackoverflow.com/questions/5553352/how-do-i-check-if-file-exists-in-makefile-so-i-can-delete-it
-ifeq ("$(wildcard $(inputpkg))", "")
-	$(error $(inputpkg-not-exist-error-msg))
-endif
+update-conda-channel::
+    ifdef inputpkg
+	    @echo 'got a value for input-pkg ' $(inputpkg)
+    else
+	    echo "inputpkg: " $(inputpkg)
+	    $(error $(input-arg-error-msg))
+    endif
+	
+	# https://stackoverflow.com/questions/5553352/how-do-i-check-if-file-exists-in-makefile-so-i-can-delete-it
+    ifeq ("$(wildcard $(inputpkg))", "")
+	    $(error [err] Did not file $(inputpkg) on file system!)
+    endif
 
 update-conda-channel::
 	echo "inputpkg is: " $(inputpkg)
