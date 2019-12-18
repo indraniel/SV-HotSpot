@@ -98,9 +98,12 @@ create-conda-channel:
 	git checkout -B docker-conda origin/docker-conda
 
 clean:
-	rm -rfv $(SVHOTSPOT_ENV)
-	rm -rfv $(MINICONDA_INSTALL_PREFIX)
-	rm -rfv $(MINICONDA_INSTALLER)
+	if [ -d $(SV_HOTSPOT_LOCAL) ]; then rm -rfv $(SV_HOTSPOT_LOCAL); fi
+	if [ -d $(SVHOTSPOT_ENV) ]; then rm -rfv $(SVHOTSPOT_ENV); fi
+	if [ -d $(MINICONDA_INSTALL_PREFIX) ]; then rm -rfv $(MINICONDA_INSTALL_PREFIX); fi
+	if [ -e $(MINICONDA_INSTALLER) ]; then rm -rfv $(MINICONDA_INSTALLER); fi
+	if ls sv-hotspot-*.tar.bz2 1>/dev/null /dev/null 2>&1; then rm -rfv sv-hotspot-*.tar.bz2; fi
+	if [ -d channel ]; then rm -rfv channel; fi
 
 # references
 # https://github.com/conda/conda/issues/7980
