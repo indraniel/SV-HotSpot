@@ -76,11 +76,7 @@ update-conda-channel::
 	cp -v sv-hotspot-*.tar.bz2 channel/win-64
 	cp -v sv-hotspot-*.tar.bz2 channel/win-32
 	$(CONDA) index channel/
-	git add channel/linux-64/repodata.json
-	git add channel/linux-32/repodata.json
-	git add channel/osx-64/repodata.json
-	git add channel/win-64/repodata.json
-	git add channel/win-32/repodata.json
+	git add channel
 	git commit -m "updated conda package $$(date)"
 	git push origin conda-channel
 	git checkout -B docker-conda origin/docker-conda
