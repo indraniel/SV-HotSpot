@@ -48,7 +48,7 @@ conda install --yes \
     --channel default \
     sv-hotspot
 
-which sv-hotspot.pl  # should be /build/svhotspot-env/bin/sv-hotspot.pl
+which sv-hotspot.pl  # should be /build/test-github-install/bin/sv-hotspot.pl
 sv-hotspot.pl --help
 
 conda deactivate
