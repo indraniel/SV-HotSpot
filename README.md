@@ -23,4 +23,38 @@ conda install --yes \
 
 which sv-hotspot.pl  # should be /build/svhotspot-env/bin/sv-hotspot.pl
 sv-hotspot.pl --help
+conda deactivate
+
+# setup github access in docker container
+git config --global user.name "indraniel"
+git config --global user.email "indraniel@gmail.com"
+
+# do this only once if the conda-channel branch doesn't exist in the github repo
+make create-conda-channel
+
+# upload the tar.bz2 to the custom github conda channel
+make update-conda-channel inputpkg=./sv-hotspot-1.0.2-pl526r36_0.tar.bz2
+
+# try installing from the custom conda channel
+cd /build
+
+conda create --yes --prefix /build/test-github-install
+conda activate /build/test-github-install
+
+conda install --yes \
+    --channel bioconda \
+    --channel conda-forge \
+    --channel https://raw.githubusercontent.com/indraniel/SV-HotSpot/conda-channel/channel/  \
+    --channel default \
+    sv-hotspot
+
+which sv-hotspot.pl  # should be /build/svhotspot-env/bin/sv-hotspot.pl
+sv-hotspot.pl --help
+
+conda deactivate
+
+# clean up
+rm -rf /build/test-github-install
+make clean
 ```
+
