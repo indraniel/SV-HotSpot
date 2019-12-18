@@ -46,8 +46,46 @@ $(CONDA): $(MINICONDA_INSTALLER)
 $(MINICONDA_INSTALLER):
 	curl -k -L -O $(MINICONDA_URL)
 
-update-conda-channel:
-	git checkout -b conda-channel origin/conda-channel
+update-conda-channel::
+define input-arg-error-msg
+missing required inputpkg argument, please run:
+
+    make update-conda-channel inputpkg=/path/to/yourpkg.version.tar.bz2
+
+
+endef
+
+define inputpkg-not-exist-error-msg
+Did not find $(inputpkg) on file system!
+endef
+
+ifdef inputpkg
+	@echo 'got a value for input-pkg ' $(inputpkg)
+else
+	$(error $(input-arg-error-msg))
+endif
+
+# https://stackoverflow.com/questions/5553352/how-do-i-check-if-file-exists-in-makefile-so-i-can-delete-it
+ifeq ("$(wildcard $(inputpkg))", "")
+	$(error $(inputpkg-not-exist-error-msg))
+endif
+
+update-conda-channel::
+	echo "inputpkg is: " $(inputpkg)
+	git checkout -B conda-channel origin/conda-channel
+	cp -v sv-hotspot-*.tar.bz2 channel/linux-64
+	cp -v sv-hotspot-*.tar.bz2 channel/linux-32
+	cp -v sv-hotspot-*.tar.bz2 channel/osx-64
+	cp -v sv-hotspot-*.tar.bz2 channel/win-64
+	cp -v sv-hotspot-*.tar.bz2 channel/win-32
+	$(CONDA) index channel/
+	git add channel/linux-64/repodata.json
+	git add channel/linux-32/repodata.json
+	git add channel/osx-64/repodata.json
+	git add channel/win-64/repodata.json
+	git add channel/win-32/repodata.json
+	git commit -m "updated conda package $$(date)"
+	git push origin conda-channel
 
 create-conda-channel:
 	git checkout --orphan conda-channel
@@ -63,6 +101,7 @@ create-conda-channel:
 	cp -v sv-hotspot-*.tar.bz2 channel/win-32
 	git add channel
 	git commit -m 'first edition conda build file'
+	git push origin conda-channel
 
 clean:
 	rm -rfv $(SVHOTSPOT_ENV)
