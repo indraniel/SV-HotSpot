@@ -88,9 +88,6 @@ update-conda-channel::
 create-conda-channel:
 	git checkout --orphan conda-channel
 	git rm -rf .
-	git commit -m 'initialize conda-channel'
-	git push origin conda-channel:conda-channel
-	git branch --set-upstream-to origin/conda-channel
 	mkdir -p channel/{linux-64,linux-32,osx-64,win-64,win-32}
 	cp -v sv-hotspot-*.tar.bz2 channel/linux-64
 	cp -v sv-hotspot-*.tar.bz2 channel/linux-32
@@ -98,7 +95,9 @@ create-conda-channel:
 	cp -v sv-hotspot-*.tar.bz2 channel/win-64
 	cp -v sv-hotspot-*.tar.bz2 channel/win-32
 	git add channel
-	git commit -m 'first edition conda build file'
+	git commit -m 'initialize conda-channel'
+	git push origin conda-channel:conda-channel
+	git branch --set-upstream-to origin/conda-channel
 	git push origin conda-channel
 	git checkout -B docker-conda origin/docker-conda
 
