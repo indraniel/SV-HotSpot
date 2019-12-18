@@ -83,6 +83,7 @@ update-conda-channel::
 	git add channel/win-32/repodata.json
 	git commit -m "updated conda package $$(date)"
 	git push origin conda-channel
+	git checkout -B docker-conda origin/docker-conda
 
 create-conda-channel:
 	git checkout --orphan conda-channel
@@ -99,6 +100,7 @@ create-conda-channel:
 	git add channel
 	git commit -m 'first edition conda build file'
 	git push origin conda-channel
+	git checkout -B docker-conda origin/docker-conda
 
 clean:
 	rm -rfv $(SVHOTSPOT_ENV)
